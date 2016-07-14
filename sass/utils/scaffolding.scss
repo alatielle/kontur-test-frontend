@@ -3,19 +3,8 @@
   font-family: "Kontur-Iconic";
   font-style: normal;
 
-  src: url("../fonts/шрифт.ttf") format("ttf");
-}
-
-@font-face {
-  font-weight: normal;
-  font-family: "Segoe UI";
-  font-style: normal;
-
-  src: url("http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Regular/latest.eot");
-  src: url("http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Regular/latest.eot?#iefix") format("embedded-opentype"),
-       url("http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Regular/latest.woff") format("woff"),
-       url("http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Regular/latest.ttf") format("truetype"),
-       url("http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Regular/latest.svg#web") format("svg");
+  src: local("Kontur-Iconic-eco"),
+    url("../fonts/kontur-iconic-eco.ttf") format("ttf");
 }
 
 html,
