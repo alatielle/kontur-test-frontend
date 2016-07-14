@@ -1,0 +1,271 @@
+.controls {
+  background-color: $sidebar-color;
+
+  &--edited {
+    background-color: $sidebar-color-edited;
+  }
+
+  &--error {
+    background-color: $sidebar-color-error;
+  }
+}
+
+.controls__group {
+  margin-bottom: 55px;
+}
+
+/*
+ * BUTTONS
+ */
+
+.controls__btn {
+  padding: 4px 6px;
+  margin-right: 6px;
+  margin-bottom: 11px;
+
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+
+  border: 1px solid transparent;
+  border-radius: 2px;
+
+  background-color: #ebebeb;
+  background-color: transparent;
+  background-origin: padding-box, border-box;
+  background-clip: padding-box, border-box;
+  background-image:
+    linear-gradient(0deg, #ebebeb 0%, #fefefe 100%),
+    $border-gradient;
+
+  &[disabled] {
+    cursor: not-allowed;
+    color: $font-color-disabled;
+    background: #f2f2f2;
+    border-color: rgba(0,0,0,0.15);
+  }
+
+  &[disabled]:hover {
+    background: #f2f2f2;
+  }
+
+  &:focus {
+    margin: -1px 5px 10px -1px;
+    border: 2px solid $outline-color;
+    box-shadow: inset 0 0 0 1px #fff;
+  }
+
+  &:hover {
+    background-color: #dedede;
+    background-color: transparent;
+    background-image:
+      linear-gradient(0deg, #dedede 0%, #f2f2f2 100%),
+      $border-gradient;
+  }
+
+  &:active {
+    margin: 0px 6px 11px 0px;
+    color: $font-color;
+    outline: none;
+    background-color: #d9d9d9;
+    background-color: transparent;
+    background-image:
+      linear-gradient(0deg, #d9d9d9 0%, #d9d9d9 100%),
+      $border-gradient-pressed;
+    box-shadow: inset 0 1px 1px 0 rgba(0,0,0,0.15);
+    border: 1px solid transparent;
+  }
+}
+
+.controls__btn--positive {
+  padding: 9px 18px;
+  margin-bottom: 0;
+
+  position: relative;
+
+  color: #fff;
+  background-color: #37910b;
+  background-color: transparent;
+  background-image:
+    linear-gradient(0deg, #37910b 0%, #4ba91d 100%),
+    $border-gradient-positive;
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 27px;
+    height: 26px;
+    transform: scaleX(0.5) rotate(45deg);
+    top: 5px;
+    left: auto;
+    right: -15px;
+
+    background-color: #37910b;
+    background-color: transparent;
+    background-origin: padding-box;
+    background-clip: padding-box;
+    background-image:
+      linear-gradient(-45deg, #37910b 0%, #4ba91d 100%);
+
+    border: 2px solid rgba(25,103,6,0.7);
+    border-bottom: none;
+    border-left: none;
+    border-radius: 2px;
+  }
+
+  &[disabled]:before {
+    cursor: not-allowed;
+    background: #f2f2f2;
+    border-color: rgba(0,0,0,0.15);
+  }
+
+  &[disabled]:hover:before {
+    background: #f2f2f2;
+  }
+
+  &:focus {
+    margin-bottom: -1px;
+  }
+
+  &:focus:before {
+    border-color: $outline-color;
+    border-width: 3px;
+    box-shadow: inset -2px 2px 0 0 #fff;
+
+    height: 27px;
+    top: 4px;
+    right: -16px;
+  }
+
+  &:focus:hover:before {
+    border-color: $outline-color;
+  }
+
+  &:hover {
+    background-color: #307e0a;
+    background-color: transparent;
+    background-image:
+      linear-gradient(0deg, #307e0a 0%, #3b8d13 100%),
+      $border-gradient-positive-hover;
+  }
+
+  &:hover:before {
+    background-color: #307e0a;
+    background-color: transparent;
+    background-image: linear-gradient(-45deg, #307e0a 0%, #3b8d13 100%);
+    border-color: rgba(8,73,2,0.7);
+  }
+
+  &:active {
+    margin-bottom: 0;
+    color: #fff;
+    background-color: #35840e;
+    background-color: transparent;
+    background-image:
+      linear-gradient(0deg, #35840e 0%, #35840e 100%),
+      $border-gradient-positive-pressed;
+    box-shadow: inset 0 1px 1px 0 rgba(0,0,0,0.3);
+  }
+
+  &:active:before {
+    height: 26px;
+    top: 5px;
+    right: -15px;
+
+    background-color: #35840e;
+    background-color: transparent;
+    background-image:
+      linear-gradient(0deg, #35840e 0%, #35840e 100%);
+    border-color: rgba(7,57,0,0.7);
+    border-width: 2px;
+
+    box-shadow: none;
+  }
+
+  &:active:hover:before {
+    border-color: rgba(7,57,0,0.7);
+  }
+}
+
+/*
+ * RADIO BUTTONS
+ */
+
+.controls__radio {
+  margin-right: 18px;
+  margin-bottom: 18px;
+
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.controls__radio-indicator {
+  display: inline-block;
+  vertical-align: sub;
+  width: 15px;
+  height: 15px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+
+  background-color: transparent;
+  background-origin: content-box, border-box;
+  background-clip: content-box, border-box;
+  background-image:
+    linear-gradient(0deg, #ebebeb 0%, #fefefe 100%),
+    $border-gradient-radio;
+
+  position: relative;
+
+  &:after {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+
+    position: absolute;
+    top: 4px;
+    left: 4px;
+  }
+
+  &:hover {
+    background-color: #dedede;
+    background-color: transparent;
+    background-image:
+      linear-gradient(0deg, #dedede 0%, #f2f2f2 100%),
+      $border-gradient-radio-hover;
+  }
+
+  &:active {
+    background-color: #d9d9d9;
+    background-color: transparent;
+    background-image:
+      linear-gradient(0deg, #d9d9d9 0%, #d9d9d9 100%),
+      $border-gradient-radio-pressed;
+    box-shadow: inset 0 1px 1px 0 rgba(0,0,0,0.15);
+  }
+
+  &:active:after {
+    background-color: #404040;
+  }
+}
+
+input[type="radio"]:checked ~ .controls__radio-indicator:after {
+  background-color: #404040;
+}
+
+input[type="radio"]:disabled ~ .controls__radio-indicator {
+  cursor: not-allowed;
+  background: #f2f2f2;
+  border-color: rgba(0,0,0,0.15);
+}
+
+input[type="radio"]:focus ~ .controls__radio-indicator {
+  margin: -1px;
+  border: 2px solid $outline-color;
+  box-shadow: inset 0 0 0 1px #fff;
+}
+
+.controls__error-msg {
+  color: $font-color-error;
+  padding-right: 5px;
+}

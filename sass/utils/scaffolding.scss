@@ -11,18 +11,23 @@
   font-family: "Segoe UI";
   font-style: normal;
 
-  src: url("http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Light/latest.eot");
-  src: url("http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Light/latest.eot?#iefix") format("embedded-opentype"),
-       url("http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Light/latest.woff") format("woff"),
-       url("http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Light/latest.ttf") format("truetype"),
-       url("http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Light/latest.svg#web") format("svg");
+  src: url("http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Regular/latest.eot");
+  src: url("http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Regular/latest.eot?#iefix") format("embedded-opentype"),
+       url("http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Regular/latest.woff") format("woff"),
+       url("http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Regular/latest.ttf") format("truetype"),
+       url("http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Regular/latest.svg#web") format("svg");
+}
+
+html,
+body {
+  height: 100%;
 }
 
 body {
   font-size: 14px;
   line-height: 20px;
   font-family: "Segoe UI", Arial, sans-serif;
-  color: $font-color-default;
+  color: $font-color;
   font-style: normal;
 
   background-color: $bg-color;

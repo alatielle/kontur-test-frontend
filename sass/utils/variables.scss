@@ -1,9 +1,73 @@
 $bg-color: #fff;
-$sidebar-color-default: #bcbcbc;
+
+$sidebar-color: #bcbcbc;
 $sidebar-color-edited: #5199db;
 $sidebar-color-error: #f6c1c0;
 
-$font-color-default: #404040;
+$font-color: #404040;
 $font-color-error: #da0902;
+$font-color-disabled: #808080;
 
-$retina: "(min-resolution: 144dpi), (min-resolution: 1.5dppx)";
+$input-color: #fff;
+$input-color-disabled: #f2f2f2;
+
+$outline-color: #5199db;
+
+$border-gradient: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.15) 0%,
+    rgba(0,0,0,0.15) 95%,
+    rgba(0,0,0,0.3) 97%,
+    rgba(0,0,0,0.3) 100%
+  );
+
+$border-gradient-pressed: linear-gradient(
+    to top,
+    rgba(0,0,0,0.15) 0%,
+    rgba(0,0,0,0.15) 95%,
+    rgba(0,0,0,0.3) 97%,
+    rgba(0,0,0,0.3) 100%
+  );
+
+$border-gradient-positive: linear-gradient(
+  to bottom,
+  rgba(25,103,6,0.7) 95%,
+  rgba(22,80,7,0.8) 97%
+);
+
+$border-gradient-positive-hover: linear-gradient(
+  to bottom,
+  rgba(8,73,2,0.7) 95%,
+  rgba(18,71,4,0.8) 97%
+);
+
+$border-gradient-positive-pressed: linear-gradient(
+  to top,
+  rgba(7,57,0,0.7) 95%,
+  rgba(13,40,0,0.8) 97%
+);
+
+$border-gradient-radio: linear-gradient(
+  to bottom,
+  rgba(0,0,0,0.15) 0%,
+  rgba(0,0,0,0.15) 7%,
+  rgba(0,0,0,0.3) 94%,
+  rgba(0,0,0,0.3) 100%
+);
+
+$border-gradient-radio-hover: linear-gradient(
+  to bottom,
+  rgba(0,0,0,0.15) 0%,
+  rgba(0,0,0,0.15) 5%,
+  rgba(0,0,0,0.3) 95%,
+  rgba(0,0,0,0.3) 100%
+);
+
+$border-gradient-radio-pressed: linear-gradient(
+  to top,
+  rgba(0,0,0,0.2) 0%,
+  rgba(0,0,0,0.2) 5%,
+  rgba(0,0,0,0.35) 95%,
+  rgba(0,0,0,0.35) 100%
+);
+
