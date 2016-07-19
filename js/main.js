@@ -147,6 +147,10 @@ var main = function() {
   }
 
   function validateInput() {
+    if (!this.value) {
+      this.classList.remove("matrix__element--error");
+      return;
+    }
     if (!this.value.match(acceptedNumber)) {
       this.classList.add("matrix__element--error");
       return;
