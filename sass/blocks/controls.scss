@@ -14,9 +14,12 @@
   margin-bottom: 55px;
 }
 
-/*
- * BUTTONS
- */
+.controls__error-msg {
+  color: $font-color-error;
+  padding-right: 5px;
+}
+
+/* BUTTONS */
 
 .controls__btn {
   padding: 4px 6px;
@@ -185,9 +188,7 @@
   }
 }
 
-/*
- * RADIO BUTTONS
- */
+/* RADIO BUTTONS */
 
 .controls__radio {
   margin-right: 18px;
@@ -261,9 +262,4 @@ input[type="radio"]:focus ~ .controls__radio-indicator {
   margin: -1px;
   border: 2px solid $outline-color;
   box-shadow: inset 0 0 0 1px #fff;
-}
-
-.controls__error-msg {
-  color: $font-color-error;
-  padding-right: 5px;
 }
