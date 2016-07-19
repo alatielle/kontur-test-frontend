@@ -4,35 +4,32 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="js/Matrix.js"></script>
+    <script src="js/main.js"></script>
     <title>SKB Kontur test task</title>
   </head>
   <body>
-    <form class="layout">
-
+    <form class="layout" id="matrixForm">
       <div class="layout__aside  controls">
-
         <div class="controls__group">
-          <button type="submit" class="controls__btn  controls__btn--positive" tabindex="1">
+          <button type="button" class="controls__btn  controls__btn--positive" id="calcBtn" tabindex="1">
             Умножить матрицы
           </button>
         </div>
-
         <div class="controls__group">
           <button type="reset" class="controls__btn" tabindex="1">
             <span class="icon"></span>
             Очистить матрицы
           </button>
-          <button type="button" class="controls__btn" tabindex="1">
+          <button type="button" class="controls__btn" id="swapBtn" tabindex="1">
             <span class="icon"></span>
             Поменять матрицы местами
           </button>
         </div>
-
         <div class="controls__group">
           <label class="controls__radio">
             <input type="radio"
-                   name="matrix"
-                   id="matrix-A"
+                   name="matrixSelector"
+                   id="choiceA"
                    class="visually-hidden"
                    value="A"
                    checked>
@@ -41,158 +38,55 @@
           </label>
           <label class="controls__radio">
             <input type="radio"
-                   name="matrix"
-                   id="matrix-B"
+                   name="matrixSelector"
+                   id="choiceB"
                    class="visually-hidden"
                    value="B">
             <span class="controls__radio-indicator"></span>
             Матрица B
           </label>
-          <button type="button" class="controls__btn" disabled>
+          <button type="button" class="controls__btn" id="addRowBtn">
             <span class="icon"></span>
             Добавить
           </button>
-          <button type="button" class="controls__btn">
+          <button type="button" class="controls__btn" id="delRowBtn">
             <span class="icon"></span>
             Удалить
           </button>
           <span>строку</span>
-          <button type="button" class="controls__btn">
+          <button type="button" class="controls__btn" id="addColBtn">
             <span class="icon"></span>
             Добавить
           </button>
-          <button type="button" class="controls__btn">
+          <button type="button" class="controls__btn" id="delColBtn">
             <span class="icon"></span>
             Удалить
           </button>
           <span>столбец</span>
         </div>
-
-        <p class="controls__error-msg  visually-hidden">Такие матрицы нельзя перемножить, так как количество столбцов матрицы A не равно количеству строк матрицы B.</p>
-
+        <p class="controls__error-msg  visually-hidden">
+          Такие матрицы нельзя перемножить,
+          так как количество столбцов матрицы A
+          не равно количеству строк матрицы B.
+        </p>
       </div>
-
       <div class="layout__main">
-
         <div class="layout__row">
-<!-- Произведение матриц -->
-          <table class="matrix">
-            <tr>
-              <td>
-                <input type="text" class="matrix__element" placeholder="c1,1" disabled>
-              </td>
-              <td>
-                <input type="text" class="matrix__element" placeholder="c1,2" disabled>
-              </td>
-              <td>
-                <input type="text" class="matrix__element" placeholder="c1,3" disabled>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input type="text" class="matrix__element" placeholder="c2,1" disabled>
-              </td>
-              <td>
-                <input type="text" class="matrix__element" placeholder="c2,2" disabled>
-              </td>
-              <td>
-                <input type="text" class="matrix__element" placeholder="c2,3" disabled>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input type="text" class="matrix__element" placeholder="c3,1" disabled>
-              </td>
-              <td>
-                <input type="text" class="matrix__element" placeholder="c3,2" disabled>
-              </td>
-              <td>
-                <input type="text" class="matrix__element" placeholder="c3,3" disabled>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input type="text" class="matrix__element" placeholder="c4,1" disabled>
-              </td>
-              <td>
-                <input type="text" class="matrix__element" placeholder="c4,2" disabled>
-              </td>
-              <td>
-                <input type="text" class="matrix__element" placeholder="c4,3" disabled>
-              </td>
-            </tr>
+          <table class="matrix" id="matrixC">
           </table>
-
-<!-- Матрица A -->
-          <table class="matrix">
+          <table class="matrix" id="matrixA">
             <caption class="matrix__name  matrix__name--right">A</caption>
-            <tr>
-              <td>
-                <input type="text" class="matrix__element" placeholder="a1,1">
-              </td>
-              <td>
-                <input type="text" class="matrix__element" placeholder="a1,2">
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input type="text" class="matrix__element" placeholder="a2,1">
-              </td>
-              <td>
-                <input type="text" class="matrix__element" placeholder="a2,2">
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input type="text" class="matrix__element" placeholder="a3,1">
-              </td>
-              <td>
-                <input type="text" class="matrix__element" placeholder="a3,2">
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input type="text" class="matrix__element" placeholder="a4,1">
-              </td>
-              <td>
-                <input type="text" class="matrix__element" placeholder="a4,2">
-              </td>
-            </tr>
           </table>
-
         </div>
-
         <div class="layout__row">
-<!-- Матрица B -->
-          <table class="matrix">
+          <table class="matrix" id="matrixB">
             <caption class="matrix__name  matrix__name--bottom">B</caption>
-            <tr>
-              <td>
-                <input type="text" class="matrix__element" placeholder="b1,1">
-              </td>
-              <td>
-                <input type="text" class="matrix__element" placeholder="b1,2">
-              </td>
-              <td>
-                <input type="text" class="matrix__element" placeholder="b1,3">
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input type="text" class="matrix__element" placeholder="b2,1">
-              </td>
-              <td>
-                <input type="text" class="matrix__element" placeholder="b2,2">
-              </td>
-              <td>
-                <input type="text" class="matrix__element" placeholder="b2,3">
-              </td>
-            </tr>
           </table>
         </div>
-
       </div>
-
     </form>
+    <script>
+      main();
+    </script>
   </body>
 </html>

@@ -62,9 +62,9 @@
 
   margin-left: 10px;
   margin-top: 10px;
-  padding: 10px 6px 0;
+  padding-top: 10px;
 
-  text-align: left;
+  text-align: center;
 
   background-color: $input-color;
 
@@ -73,6 +73,10 @@
   border-image-slice: 1;
 
   box-shadow: inset 0 1px 0 0 rgba(0,0,0,0.05);
+
+  &--error {
+    background-color: $error-color;
+  }
 
   &[disabled] {
     color: $font-color-disabled;

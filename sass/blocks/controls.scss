@@ -2,11 +2,11 @@
   background-color: $sidebar-color;
 
   &--edited {
-    background-color: $sidebar-color-edited;
+    background-color: $edited-color;
   }
 
   &--error {
-    background-color: $sidebar-color-error;
+    background-color: $error-color;
   }
 }
 
@@ -26,6 +26,7 @@
   cursor: pointer;
   outline: none;
   text-decoration: none;
+  user-select: none;
 
   border: 1px solid transparent;
   border-radius: 2px;
@@ -113,14 +114,11 @@
     border-radius: 2px;
   }
 
-  &[disabled]:before {
+  &[disabled]:before,
+  &[disabled]:hover:before {
     cursor: not-allowed;
     background: #f2f2f2;
     border-color: rgba(0,0,0,0.15);
-  }
-
-  &[disabled]:hover:before {
-    background: #f2f2f2;
   }
 
   &:focus {
