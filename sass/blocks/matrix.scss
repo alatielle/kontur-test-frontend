@@ -86,12 +86,55 @@
     box-shadow: none;
   }
 
+  &::placeholder {
+    opacity: 1;
+    color: #d9d9d9;
+  }
+
+  &::-webkit-input-placeholder {
+    opacity: 1;
+    color: #d9d9d9;
+  }
+
+  &::-moz-placeholder {
+    opacity: 1;
+    color: #d9d9d9;
+  }
+
+  &:-moz-placeholder {
+    opacity: 1;
+    color: #d9d9d9;
+  }
+
+  &:-ms-input-placeholder {
+    opacity: 1;
+    color: #d9d9d9;
+  }
+
   &:focus {
     outline: 2px solid $outline-color;
     outline-offset: -1px;
     box-shadow: inset 1px 1px 0 0 #fff,
                 inset -1px -1px 0 0 #fff;
+  }
 
+  &:focus::placeholder {
+    color: transparent;
+  }
+
+  &:focus::-webkit-input-placeholder {
+    color: transparent;
+  }
+
+  &:focus::-moz-placeholder {
+    color: transparent;
+  }
+
+  &:focus:-moz-placeholder {
+    color: transparent;
+  }
+  &:focus:-ms-input-placeholder {
+    color: transparent;
   }
 }
 
