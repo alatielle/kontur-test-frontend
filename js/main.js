@@ -8,17 +8,32 @@ var main = function() {
 
   var sidebar = document.querySelector(".controls");
   var errMsg = document.querySelector(".controls__error-msg");
+  var matrixForm = document.forms.matrixForm;
+  var matrixA = document.getElementById("matrixA");
+  var matrixB = document.getElementById("matrixB");
+  var matrixC = document.getElementById("matrixC");
+  var choiceA = document.getElementById("choiceA");
+  var choiceB = document.getElementById("choiceB");
+  var calcBtn = document.getElementById("calcBtn");
+  var swapBtn = document.getElementById("swapBtn");
+  var addRowBtn = document.getElementById("addRowBtn");
+  var addColBtn = document.getElementById("addColBtn");
+  var delRowBtn = document.getElementById("delRowBtn");
+  var delColBtn = document.getElementById("delColBtn");
 
-  createMatrix(4, 2, "matrixA");
-  createMatrix(2, 3, "matrixB");
-  createMatrix(4, 3, "matrixC", true);
+  createMatrix("matrixA", 4, 2);
+  createMatrix("matrixB", 2, 3);
+  createMatrix("matrixC", 4, 3, true);
   restoreBtnStates(matrixA);
 
- /* EVENT LISTENERS */
+ /* EVENT LISTENERS - polyfill added for IE8*/
 
   matrixForm.addEventListener("input", function() {
     sidebar.classList.add("controls--edited");
-  }); //тут возможен баг в ИЕ
+  });
+  matrixForm.onpropertychange = function() {
+    sidebar.classList.add("controls--edited");
+  }
 
   choiceA.addEventListener("click", function() {
     restoreBtnStates(matrixA);
@@ -28,7 +43,6 @@ var main = function() {
     restoreBtnStates(matrixB);
   });
 
-  //добавить вызов по enter?
   calcBtn.addEventListener("click", multiplyMatrices);
 
   swapBtn.addEventListener("click", swapMatrices);
@@ -41,7 +55,7 @@ var main = function() {
 
   delColBtn.addEventListener("click", delColAndProcessMatrices);
 
- /* HANDLERS */
+ /* HANDLER FUNCTIONS */
 
   function multiplyMatrices() {
     var valuesA = createValuesArray(matrixA);
@@ -153,7 +167,7 @@ var main = function() {
   * Composes an array of matrix values, which is
   * further used as an argument for Matrix Object
   *
-  * @param {object} matrix
+  * @param {Element} matrix
   * @return Array.<number[]> valuesArray
   */
   function createValuesArray(matrix) {
@@ -177,7 +191,8 @@ var main = function() {
  /**
   * Adds HTML layout for a matrix row
   *
-  * @param {object} matrix
+  * @param {Element} matrix
+  * @param {boolean} [disableFlag]
   */
   function addRow(matrix, disableFlag) {
     var tbody = matrix.lastElementChild;
@@ -196,7 +211,7 @@ var main = function() {
  /**
   * Removes HTML layout for a matrix row
   *
-  * @param {object} matrix
+  * @param {Element} matrix
   */
   function removeRow(matrix) {
     var tbody = matrix.lastElementChild;
@@ -208,7 +223,8 @@ var main = function() {
  /**
   * Adds HTML layout for a matrix column
   *
-  * @param {object} matrix
+  * @param {Element} matrix
+  * @param {boolean} [disableFlag]
   */
   function addColumn(matrix, disableFlag) {
     var rowsCount = matrix.rows.length;
@@ -224,7 +240,7 @@ var main = function() {
  /**
   * Removes HTML layout for a matrix column
   *
-  * @param {object} matrix
+  * @param {Element} matrix
   */
   function removeColumn(matrix) {
     var rowsCount = matrix.rows.length;
@@ -240,7 +256,7 @@ var main = function() {
   * Sets proper attributes for Add & Delete
   * buttons based on matrix size
   *
-  * @param {object} matrix
+  * @param {Element} matrix
   */
   function restoreBtnStates(matrix) {
     var rowsCount = matrix.rows.length;
@@ -262,16 +278,6 @@ var main = function() {
     }
     if (colsCount < MAX_SIZE) {
       addColBtn.removeAttribute("disabled");
-    }
-  }
-
- /**
-  * Clears values of matrix C
-  */
-  function clearOutput() {
-    var inputs = matrixC.getElementsByTagName("input");
-    for (var i = 0; i < inputs.length; ++i) {
-      inputs[i].value = "";
     }
   }
 
@@ -316,11 +322,21 @@ var main = function() {
   }
 
  /**
+  * Clears values of matrix C
+  */
+  function clearOutput() {
+    var inputs = matrixC.getElementsByTagName("input");
+    for (var i = 0; i < inputs.length; ++i) {
+      inputs[i].value = "";
+    }
+  }
+
+ /**
   * Replaces a letter in a placeholder of given
   * cells with a new one
   * placeholder="a1,1" -> placeholder="b1,1"
   *
-  * @param {object} cells
+  * @param {Element} cells
   * @param {string} letter
   * @param {string} newLetter
   */
@@ -336,18 +352,17 @@ var main = function() {
   * with given indexes.
   * <td><input></td>
   *
-  * @param {object} matrix
+  * @param {Element} matrix
   * @param {number} i
   * @param {number} j
   * @param {boolean} [disableFlag]
-  * @return {object} td
+  * @return {Element} td
   */
   function createCell(matrix, i, j, disableFlag) {
     var td = document.createElement("td");
     var input = document.createElement("input");
     input.className = "matrix__element";
     input.setAttribute("type", "text");
-    //input.onkeypress = limitInputValue;
     input.onchange = validateInput;
     input.setAttribute("placeholder", matrix.name + i + "," + j);
     if (disableFlag == true) {
@@ -358,14 +373,14 @@ var main = function() {
   }
 
  /**
-  * Creates HTML layout for a matrix.
+  * Creates HTML layout for a matrix with a given id.
   *
+  * @param {string} id
   * @param {number} rowsCount
   * @param {number} colsCount
-  * @param {string} id
   * @param {boolean} [disableFlag]
   */
-  function createMatrix(rowsCount, colsCount, id, disableFlag) {
+  function createMatrix(id, rowsCount, colsCount, disableFlag) {
     var matrix = document.getElementById(id);
     matrix.name = id.charAt(id.length - 1).toLowerCase();
     var tbody = document.createElement("tbody");

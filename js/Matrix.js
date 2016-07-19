@@ -26,7 +26,6 @@ function Matrix(array) {
     return colsCount;
   };
 
-
  /**
   * Multiplies matrices.
   * A.multiply(B)
