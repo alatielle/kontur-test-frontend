@@ -85,9 +85,16 @@
             <caption class="matrix__name  matrix__name--bottom">B</caption>
           </table>
         </div>
+        <p class="nojs-msg">
+          Без javascript ничего работать не будет.
+          Пожалуйста, включите его.
+        </p>
       </div>
     </form>
     <script>
+      var msg = document.querySelector(".nojs-msg");
+      msg.classList.add("visually-hidden");
+
       main();
     </script>
   </body>

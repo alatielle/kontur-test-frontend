@@ -26,7 +26,7 @@ var main = function() {
   createMatrix("matrixC", 4, 3, true);
   restoreBtnStates(matrixA);
 
- /* EVENT LISTENERS - polyfill added for IE8*/
+ /* EVENT LISTENERS*/
 
   matrixForm.addEventListener("input", function() {
     sidebar.classList.add("controls--edited");
