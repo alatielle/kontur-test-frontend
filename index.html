@@ -124,6 +124,18 @@
     </script>
     <!--[if lte IE 9]>
       <script src="js/placeholder.polyfill.js"></script>
+      <script>
+        var matrices = document.querySelectorAll(".matrix");
+
+        for (var i = 0; i < matrices.length; ++i) {
+          var before = document.createElement("div");
+          before.classList.add("before");
+          var after = document.createElement("div");
+          after.classList.add("after");
+          matrices[i].insertBefore(after, matrices[i].firstElementChild);
+          matrices[i].insertBefore(before, matrices[i].firstElementChild);
+        }
+      </script>
     <![endif]-->
     <!--[if IE 9]>
       <script>

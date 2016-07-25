@@ -1,3 +1,20 @@
+.matrix .before,
+.matrix .after {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  height: 6px;
+  background-color: white;
+}
+
+.matrix .before {
+  top: -2px;
+}
+
+.matrix .after {
+  bottom: -2px;
+}
+
 .matrix__element {
   padding-top: 12px;
 }
