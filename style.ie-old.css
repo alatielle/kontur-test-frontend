@@ -1,0 +1,127 @@
+.matrix__element {
+  padding-top: 12px;
+}
+
+.controls__btn {
+  border-color: #808080;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#ebebeb', GradientType=0);
+}
+
+.controls__btn[disabled] {
+  filter: none;
+}
+
+.controls__btn:hover {
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#dedede', GradientType=0);
+}
+
+.controls__btn[disabled]:hover {
+  filter: none;
+}
+
+.controls__btn:active {
+  filter: none;
+  background-color: #d9d9d9;
+}
+
+.controls__btn:focus:hover {
+  border-color: #5199db;
+}
+
+.controls__btn--positive {
+  margin-right: 10px;
+  border-color: #196706;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4ba91d', endColorstr='#37910b', GradientType=0);
+}
+
+.controls__btn--positive::before {
+  display: none;
+}
+
+.edge {
+  position: absolute;
+  width: 27px;
+  height: 26px;
+  -ms-transform: scaleX(0.5) rotate(45deg);
+  top: 5px;
+  left: auto;
+  right: -15px;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4ba91d', endColorstr='#37910b', GradientType=1);
+  border: 2px solid #196706;
+  border-bottom: none;
+  border-left: none;
+}
+
+.controls__btn--positive[disabled],
+.controls__btn--positive[disabled] .edge {
+  border-color: #d9d9d9;
+  background: #f2f2f2;
+  filter: none;
+}
+
+.controls__btn--positive[disabled]:hover {
+  border-color: #d9d9d9;
+  filter: none;
+}
+
+.controls__btn--positive:hover,
+.controls__btn--positive:hover .edge {
+  border-color: #084902;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b8d13', endColorstr='#307e0a', GradientType=0);
+}
+
+.controls__btn--positive:active,
+.controls__btn--positive:active .edge {
+  border-color: #073900;
+  filter: none;
+  background-color: #35840e;
+}
+
+.controls__btn--positive:active {
+  margin-right: 9px;
+}
+
+.controls__btn--positive:focus {
+  border-right: none;
+  margin-right: 10px;
+}
+
+.controls__btn--positive:focus .edge {
+  border-color: #5199db;
+}
+
+.controls__radio-indicator {
+  border-color: #808080;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#ebebeb', GradientType=0);
+}
+
+input[type="radio"]:checked ~ .mask .controls__radio-indicator::after {
+  background-color: #404040;
+}
+
+input[type="radio"]:disabled ~ .mask .controls__radio-indicator {
+  cursor: not-allowed;
+  background: #f2f2f2;
+  border-color: rgba(0,0,0,0.15);
+}
+
+input[type="radio"]:focus ~ .mask .controls__radio-indicator {
+  margin: -1px;
+  border: 2px solid #5199db;
+  box-shadow: inset 0 0 0 1px #fff;
+}
+
+.mask {
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.small-radius {
+  border-radius: 2px;
+}
+
+.large-radius {
+  border-radius: 50%;
+}

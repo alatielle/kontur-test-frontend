@@ -3,8 +3,17 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="js/es5-sham.js"></script>
-    <script src="js/eventListener.polyfill.js"></script>
+    <!--[if lte IE 9]>
+      <link rel="stylesheet" type="text/css" href="css/style.ie-old.css">
+      <script src="js/polyfills.js"></script>
+    <![endif]-->
+    <!--[if IE 8]>
+      <style type="text/css">
+        .controls__radio-indicator {
+          display: none;
+        }
+      </style>
+    <![endif]-->
     <script src="js/Matrix.js"></script>
     <script src="js/main.js"></script>
     <title>SKB Kontur test task</title>
@@ -18,14 +27,18 @@
           </button>
         </div>
         <div class="controls__group">
-          <button type="reset" class="controls__btn" tabindex="1">
-            <span class="icon"></span>
-            Очистить матрицы
-          </button>
-          <button type="button" class="controls__btn" id="swapBtn" tabindex="1">
-            <span class="icon"></span>
-            Поменять матрицы местами
-          </button>
+          <div class="controls__line">
+            <button type="reset" class="controls__btn" id="clearBtn" tabindex="1">
+              <span class="icon"></span>
+              Очистить матрицы
+            </button>
+          </div>
+          <div class="controls__line">
+            <button type="button" class="controls__btn" id="swapBtn" tabindex="1">
+              <span class="icon"></span>
+              Поменять матрицы местами
+            </button>
+          </div>
         </div>
         <div class="controls__group">
           <label class="controls__radio">
@@ -35,7 +48,7 @@
                    class="visually-hidden"
                    value="A"
                    checked>
-            <span class="controls__radio-indicator"></span>
+            <span class="controls__radio-indicator  "></span>
             Матрица A
           </label>
           <label class="controls__radio">
@@ -47,24 +60,36 @@
             <span class="controls__radio-indicator"></span>
             Матрица B
           </label>
-          <button type="button" class="controls__btn" id="addRowBtn">
-            <span class="icon"></span>
-            Добавить
-          </button>
-          <button type="button" class="controls__btn" id="delRowBtn">
-            <span class="icon"></span>
-            Удалить
-          </button>
-          <span>строку</span>
-          <button type="button" class="controls__btn" id="addColBtn">
-            <span class="icon"></span>
-            Добавить
-          </button>
-          <button type="button" class="controls__btn" id="delColBtn">
-            <span class="icon"></span>
-            Удалить
-          </button>
-          <span>столбец</span>
+          <div class="controls__line">
+            <div class="controls__item">
+              <button type="button" class="controls__btn" id="addRowBtn">
+                <span class="icon"></span>
+                Добавить
+              </button>
+            </div>
+            <div class="controls__item">
+              <button type="button" class="controls__btn" id="delRowBtn">
+                <span class="icon"></span>
+                Удалить
+              </button>
+            </div>
+            <span>строку</span>
+          </div>
+          <div class="controls__line">
+            <div class="controls__item">
+              <button type="button" class="controls__btn" id="addColBtn">
+                <span class="icon"></span>
+                Добавить
+              </button>
+            </div>
+            <div class="controls__item">
+              <button type="button" class="controls__btn" id="delColBtn">
+                <span class="icon"></span>
+                Удалить
+              </button>
+            </div>
+            <span>столбец</span>
+          </div>
         </div>
         <p class="controls__error-msg  visually-hidden">
           Такие матрицы нельзя перемножить,
@@ -97,5 +122,38 @@
 
       main();
     </script>
+    <!--[if lte IE 9]>
+      <script src="js/placeholder.polyfill.js"></script>
+    <![endif]-->
+    <!--[if IE 9]>
+      <script>
+        var greenBtns = document.querySelectorAll(".controls__btn--positive");
+        var buttons = document.querySelectorAll(".controls__btn");
+        var radios = document.querySelectorAll(".controls__radio-indicator");
+        for (var i = 0; i < buttons.length; ++i) {
+          var mask = document.createElement("div");
+          mask.classList.add("mask");
+          mask.classList.add("small-radius");
+          buttons[i].parentNode.insertBefore(mask, buttons[i]).appendChild(buttons[i]);
+        }
+        for (var i = 0; i < radios.length; ++i) {
+          var mask = document.createElement("div");
+          mask.classList.add("mask");
+          mask.classList.add("large-radius");
+          radios[i].parentNode.insertBefore(mask, radios[i]).appendChild(radios[i]);
+        }
+        for (var i = 0; i < greenBtns.length; ++i) {
+          var edge = document.createElement("span");
+          edge.classList.add("edge");
+          greenBtns[i].appendChild(edge);
+        }
+      </script>
+    <![endif]-->
+    <!--[if IE 8]>
+      <script>
+        document.getElementById("choiceA").classList.remove("visually-hidden");
+        document.getElementById("choiceB").classList.remove("visually-hidden");
+      </script>
+    <![endif]-->
   </body>
 </html>
