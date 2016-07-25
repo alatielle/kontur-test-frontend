@@ -1,5 +1,6 @@
 .matrix {
   display: inline-table;
+  vertical-align: top;
 
   outline: 2px solid #404040;
   outline-offset: -2px;
@@ -15,25 +16,31 @@
 
   position: relative;
 
-  &:before,
-  &:after {
+  /* IE8 does some weird stuff.
+    :before isn't positioned absolutely,
+    :after is positioned but both are not
+    shown with empty content.
+    So let it be :: instead of : */
+  /* Same in IE 9 */
+  &::before,
+  &::after {
     content: "";
 
     position: absolute;
     left: 8px;
     right: 8px;
 
-    height: 2px;
+    height: 6px; // not 2 because of weird IE & EDGE rendering
 
-    background-color: #fff;
+    background-color: $bg-color;
   }
 
-  &:before {
-    top: 0;
+  &::before {
+    top: -2px;
   }
 
-  &:after {
-    bottom: 0;
+  &::after {
+    bottom: -2px;
   }
 }
 
@@ -63,8 +70,9 @@
   margin-left: 10px;
   margin-top: 10px;
   padding-top: 10px;
+  padding-left: 6px;
 
-  text-align: center;
+  text-align: left;
 
   background-color: $input-color;
 
@@ -80,6 +88,7 @@
 
   &[disabled] {
     color: $font-color-disabled;
+    -webkit-text-fill-color: $font-color-disabled;
     background-color: $input-color-disabled;
     border: 1px solid rgba(0,0,0,0.15);
     border-image: none;
@@ -94,6 +103,7 @@
   &::-webkit-input-placeholder {
     opacity: 1;
     color: #d9d9d9;
+    -webkit-text-fill-color: #d9d9d9;
   }
 
   &::-moz-placeholder {

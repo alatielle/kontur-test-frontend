@@ -3,8 +3,8 @@
   font-family: "Kontur-Iconic";
   font-style: normal;
 
-  src: local("Kontur-Iconic-eco");
-  src: url("../fonts/Kontur-iconic-eco.eot?") format("eot"),
+  src: url("../fonts/Kontur-iconic-eco.eot");
+  src: url("../fonts/Kontur-iconic-eco.eot?") format("embedded-opentype"),
        url("../fonts/Kontur-iconic-eco.woff2") format("woff2"),
        url("../fonts/Kontur-iconic-eco.woff") format("woff"),
        url("../fonts/Kontur-iconic-eco.ttf") format("truetype");
