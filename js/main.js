@@ -8,7 +8,7 @@ var main = function() {
 
   var sidebar = document.querySelector(".controls");
   var errMsg = document.querySelector(".controls__error-msg");
-  var matrixForm = document.forms.matrixForm;
+  var form = document.forms.matrixForm;
   var matrixA = document.getElementById("matrixA");
   var matrixB = document.getElementById("matrixB");
   var matrixC = document.getElementById("matrixC");
@@ -27,13 +27,7 @@ var main = function() {
   restoreBtnStates(matrixA);
 
  /* EVENT LISTENERS*/
-
-  matrixForm.addEventListener("input", function() {
-    sidebar.classList.add("controls--edited");
-  });
-  matrixForm.onpropertychange = function() {
-    sidebar.classList.add("controls--edited");
-  }
+  matrixForm.addEventListener("reset", resetInterface);
 
   choiceA.addEventListener("click", function() {
     restoreBtnStates(matrixA);
@@ -57,6 +51,14 @@ var main = function() {
 
  /* HANDLER FUNCTIONS */
 
+  function resetInterface() {
+    var inputs = matrixForm.getElementsByTagName("input");
+    for (var i = 0; i < inputs.length; ++i) {
+      inputs[i].classList.remove("matrix__element--error");
+    }
+    sidebar.classList.remove("controls--edited");
+  }
+
   function multiplyMatrices() {
     var valuesA = createValuesArray(matrixA);
     var valuesB = createValuesArray(matrixB);
@@ -69,7 +71,7 @@ var main = function() {
     for (var i = 0; i < result.length; ++i) {
       for (var j = 0; j < result[i].length; ++j) {
         var cell = matrixC.rows[i].cells[j];
-        cell.firstElementChild.value = result[i][j];
+        cell.getElementsByTagName("input")[0].value = result[i][j];
       }
     }
   }
@@ -182,7 +184,7 @@ var main = function() {
       valuesArray[i] = [];
       for (var j = 0; j < colsCount; ++j) {
         var cell = matrix.rows[i].cells[j];
-        var value = cell.firstElementChild.value;
+        var value = cell.getElementsByTagName("input")[0].value;
         if (!value.match(acceptedNumber)) {
           return;
         }
@@ -369,8 +371,23 @@ var main = function() {
     input.setAttribute("type", "text");
     input.onchange = validateInput;
     input.setAttribute("placeholder", matrix.name + i + "," + j);
+    // specially for IE 9!
+    if (input.placeholder) {
+      input.placeholder = matrix.name + i + "," + j;
+    }
     if (disableFlag == true) {
       input.setAttribute("disabled", "");
+    }
+    if ("onpropertychange" in input && !disableFlag) {
+      input.onpropertychange = function() {
+        if (event.propertyName == "value") {
+          sidebar.classList.add("controls--edited");
+        }
+      };
+    } else {
+      input.oninput = function() {
+        sidebar.classList.add("controls--edited");
+      };
     }
     td.appendChild(input);
     return td;
